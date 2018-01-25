@@ -1,0 +1,141 @@
+//2.16
+#include <iostream>
+using namespace std;
+int main() {
+  int number1{0};
+  int number2{0};
+  int sum{0};
+  int product{0};
+  int difference{0};
+  int quotient{0};
+  
+   cout<<"Enter first integer:";
+   cin>>number1;
+  
+   cout<<"Enter second integer:";
+   cin>>number2;
+  
+  sum=number1+number2;
+  product=number1*number2;
+  difference=number1-number2;
+  quotient=number1/number2;
+  
+   cout <<"Sum is "<<sum<<std::endl;
+   cout <<"Product is "<<product<<std::endl;
+   cout <<"Difference (first by second) is "<<difference<<std::endl;
+   cout <<"Quotient (first by second) is "<<quotient<<std::endl;
+}
+//2.17
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<"1 2 3 4 \n";
+    
+    cout<<"1 "<<"2 "<<"3 "<<"4\n";
+    
+    cout<<"1 ";
+    cout<<"2 ";
+    cout<<"3 ";
+    cout<<"4";
+    return 0;
+}
+//2.18
+#include <iostream>
+using namespace std;
+int main() {
+  int number1{0};
+  int number2{0};
+  
+   cout<<"Enter first integer:";
+   cin>>number1;
+  
+   cout<<"Enter second integer:";
+   cin>>number2;
+if (number1>number2){
+    cout <<number1<<" is larger"<<endl;
+}
+if (number2>number1){
+    cout <<number2<<" is larger"<<endl;
+}
+if (number1==number2){
+    cout <<"These numbers are equal";
+}
+}
+//2.19
+#include <iostream>
+using namespace std;
+int main() {
+  int number1{0};
+  int number2{0};
+  int number3{0};
+  int sum{0};
+  float average{0};
+  int product{0};
+  int smallest{0};
+  int largest{0};
+  
+   cout<<"Enter first integer:";
+   cin>>number1;
+  
+   cout<<"Enter second integer:";
+   cin>>number2;
+   
+   cout<<"Enter third integer:";
+   cin>>number3;
+  
+  sum=number1+number2+number3;
+  average=sum/3;
+  product=number1*number2*number3;
+  smallest=number3;
+  largest=number1;
+if (number2>largest){
+     largest=number2;
+}
+if (number3>largest){
+    largest=number3;
+}
+if (number2<smallest){
+    smallest=number2;
+}
+if (number1<smallest){
+    smallest=number1;
+}
+   cout <<"Sum is "<<sum<<endl;
+   cout <<"Product is "<<product<<endl;
+   cout <<"Average is "<<average<<endl;
+   cout <<"Smallest is (defaults to reverse order entered if equal) "<<smallest<<endl;
+   cout <<"Largest (defaults to order entered if equal) is "<<largest<<endl;
+}
+//2.20
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int radius{0};
+    float pi{3.14159};
+cout <<"Enter radius: ";
+cin>>radius;
+cout <<"The circumference of this circle is "<< 2*radius*pi<<endl;
+cout <<"The area of this circle is "<< radius*radius*pi<<endl;
+}
+//2.30
+#include <iostream>
+using namespace std;
+
+int main() {
+	int weight{0};
+	int height{0};
+	float BMI{0};
+	cout<<"Please enter your weight in pounds "<<endl;
+	cin>>weight;
+	cout<<"Please enter your height in inches "<<endl;
+	cin>>height;
+	BMI=(weight*703)/(height*height);
+	cout<<"Your BMI is "<<BMI<<endl;
+	cout<<"BMI VALUES\n Underweight: \t less than 18.5\n Normal:\t between 18.5 and 24.9\n Overweight:\t between 25 and 29.9\n Obese:\t 30 or greater"<<endl;
+}
