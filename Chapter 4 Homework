@@ -1,0 +1,109 @@
+//4.13 main
+#include <iostream>
+#include "Gas.h"
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    Gas gas1{0,0,0,0};
+    cout<<"Enter miles driven (-1 to quit): ";
+        int m;
+        cin>>m;
+        gas1.setMilesDriven(m);
+    while (gas1.getMilesDriven() != -1){
+
+        cout<<"Enter gallons used: ";
+        int g;
+        cin>>g;
+        gas1.setGallonsUsed(g);
+
+        cout<<"MPG this trip: ";
+        cout<<setprecision(8)<<gas1.calculateMPG();
+
+        cout<<"\nTotal MPG: ";
+        cout<<setprecision(8)<<gas1.calculateTMPG();
+
+        cout<<"\n\nEnter miles driven (-1 to quit): ";
+        int m;
+        cin>>m;
+        gas1.setMilesDriven(m);
+
+    }
+    return 0;
+}
+
+//4.13 Class
+#ifndef GAS_H
+#define GAS_H
+class Gas {
+    public:
+        Gas(double milesDriven, double gallonsUsed, double totalMiles, double totalGallons)
+        : miles{milesDriven}, gallons{gallonsUsed}, totalM{totalMiles}, totalG{totalGallons}{
+
+        }
+    void setMilesDriven(double driven){
+    miles=driven;
+    totalM=totalM+miles;
+    }
+
+    double getMilesDriven(){
+    return miles;
+    }
+
+    void setGallonsUsed(double used){
+    gallons=used;
+    totalG=totalG+gallons;
+    }
+
+    double getGallonsUsed(){
+    return gallons;
+    }
+
+    double calculateMPG(){
+    double mpg;
+    mpg=miles/gallons;
+    return mpg;
+    }
+
+    double calculateTMPG(){
+    double tmpg;
+    tmpg=totalM/totalG;
+    return tmpg;
+    }
+
+    private:
+        double miles{0};
+        double gallons{0};
+        double totalM{0};
+        double totalG{0};
+};
+
+
+#endif // GAS_H
+
+//4.17
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int counter=1;
+    cout << "Enter number: ";
+    int largest;
+    cin>>largest;
+    int number;
+    while (counter<10){
+        cout << "Enter number: ";
+        cin>>number;
+        counter++;
+        if(number>largest){
+            largest=number;
+            }
+    }
+    cout <<"largest number was "<< largest;
+
+}
+
+
