@@ -1,0 +1,350 @@
+// Problem 3.9, AccountTest
+#include <iostream>
+#include "Account.h"
+
+using namespace std;
+
+int main()
+{
+   Account account1{"Jane Green", 50};
+   Account account2{"John Blue", -7};
+
+   // display initial balance of each object
+   cout << "account1: " << account1.getName() << " balance is $"
+      << account1.getBalance();
+   cout << "\naccount2: " << account2.getName() << " balance is $"
+      << account2.getBalance();
+
+   cout << "\n\nEnter deposit amount for account1: ";
+   int depositAmount;
+   cin >> depositAmount; // obtain user input
+   cout << "adding " << depositAmount << " to account1 balance";
+   account1.deposit(depositAmount);
+
+   // display balances
+   cout << "\n\naccount1: " << account1.getName() << " balance is $"
+      << account1.getBalance();
+   cout << "\naccount2: " << account2.getName() << " balance is $"
+      << account2.getBalance();
+
+   cout << "\n\nEnter deposit amount for account2: "; // prompt
+   cin >> depositAmount;
+   cout << "adding " << depositAmount << " to account2 balance";
+   account2.deposit(depositAmount);
+
+   // display balances
+   cout << "\n\naccount1: " << account1.getName() << " balance is $"
+      << account1.getBalance();
+   cout << "\naccount2: " << account2.getName() << " balance is $"
+      << account2.getBalance() << endl;
+
+    cout << "\n\nEnter withdrawal amount for account1: ";
+   int withdrawAmount;
+   cin >> withdrawAmount;
+   cout << "removing " << withdrawAmount << " from account1 balance";
+   account1.withdraw(withdrawAmount);
+
+   // display balances
+   cout << "\n\naccount1: " << account1.getName() << " balance is $"
+      << account1.getBalance();
+   cout << "\naccount2: " << account2.getName() << " balance is $"
+      << account2.getBalance();
+
+      cout << "\n\nEnter withdrawal amount for account2: ";
+   int withdrawAmount2;
+   cin >> withdrawAmount2;
+   cout << "removing " << withdrawAmount2 << " from account2 balance";
+   account2.withdraw(withdrawAmount); // add to account1's balance
+
+   cout << "\n\naccount1: " << account1.getName() << " balance is $"
+      << account1.getBalance();
+   cout << "\naccount2: " << account2.getName() << " balance is $"
+      << account2.getBalance();
+}
+
+// Problem 3.9 class w/new function
+#include <string>
+#include <iostream>
+using namespace std;
+class Account {
+public:
+   Account(std::string accountName, int initialBalance)
+      : name{accountName} {
+
+      if (initialBalance > 0) {
+         balance = initialBalance;
+      }
+   }
+
+   void deposit(int depositAmount) {
+      if (depositAmount > 0) {
+         balance = balance + depositAmount;
+      }
+   }
+
+   int getBalance() const {
+      return balance;
+   }
+
+   void setName(std::string accountName) {
+      name = accountName;
+   }
+
+   std::string getName() const {
+      return name;
+   }
+
+   void withdraw(int withdrawalAmount) {
+   if (balance>=withdrawalAmount){
+    balance=balance-withdrawalAmount;
+   }
+   if (balance<=withdrawalAmount){
+    cout<<"\n\nWithdrawal amount exceeded account balance.";
+   }
+   }
+
+private:
+   std::string name;
+   int balance{0};
+};
+
+//3.10, main
+#include <iostream>
+#include "Invoice.h"
+using namespace std;
+
+int main(){
+   Invoice invoice1{"0","0",0,0};
+   cout << "Set invoice type number: ";
+   string iType;
+   cin >> iType;
+   invoice1.setTypeNumber(iType);
+   cout << "Type number is " << invoice1.getTypeNumber();
+
+   cout << "\n\nSet invoice part number: ";
+   string iPart;
+   cin >> iPart;
+   invoice1.setPartsNumber(iPart);
+   cout << "Part number is " << invoice1.getPartsNumber();
+
+   cout << "\n\nSet the quantity: ";
+   int iQuantity;
+   cin >> iQuantity;
+   invoice1.setItemQuantity(iQuantity);
+   cout << "Quantity is " << invoice1.getItemQuantity();
+
+   cout << "\n\nSet the price for this item: ";
+   int iPrice;
+   cin >> iPrice;
+   invoice1.setItemPrice(iPrice);
+   cout << "Price is " << invoice1.getItemPrice()<<"$";
+
+   cout << "\n\nTotal invoice cost is $"<<invoice1.getInvoiceAmount();
+}
+
+//3.10, Header
+#include <string>
+class Invoice {
+public:
+    Invoice(std::string typeNumber, std::string partsNumber, int itemQuantity, int itemPrice)
+      : typeNumber{typeNumber}, partsNumber{partsNumber}, itemQuantity{itemQuantity}, itemPrice{itemPrice}{
+      }
+   void setTypeNumber(std::string type) {
+    typeNumber = type;
+   }
+   std::string getTypeNumber() const{
+    return typeNumber;
+   }
+   void setPartsNumber(std::string part) {
+      partsNumber=part;
+   }
+   std::string getPartsNumber() const{
+    return partsNumber;
+   }
+   void setItemQuantity(int quantity) {
+      itemQuantity = quantity;
+      if (itemQuantity < 0){
+        itemQuantity=0;
+      }
+   }
+   int getItemQuantity() const{
+    return itemQuantity;
+   }
+    void setItemPrice(int price) {
+      if (itemPrice < 0){
+      itemPrice = 0;
+      }
+   }
+   int getItemPrice() const{
+    return itemPrice;
+   }
+   int getInvoiceAmount() const{
+       int invoiceAmount;
+       invoiceAmount=itemPrice*itemQuantity;
+   }
+private:
+   std::string typeNumber;
+   std::string partsNumber;
+   int itemQuantity{0};
+   int itemPrice{0};
+};
+
+//3.12, main
+#include <iostream>
+#include "Date-1.h"
+using namespace std;
+
+int main(){
+   Date date1{1,1,1};
+   cout << "Set month: ";
+   int d1;
+   cin>>d1;
+   date1.setMonth(d1);
+   cout << "\nMonth set to "<<date1.getMonth();
+
+   cout << "\n\nSet day: ";
+   int d2;
+   cin>>d2;
+   date1.setDay(d2);
+   cout << "\nDay set to "<<date1.getDay();
+
+   cout << "\n\nSet year: ";
+   int d3;
+   cin>>d3;
+   date1.setYear(d3);
+   cout << "\nYear set to "<<date1.getYear();
+   cout << "\nThe date entered is ";
+   date1.displayDate();
+}
+
+
+//3.12, Header
+#include <iostream>
+#include <string>
+class Date {
+public:
+    Date(int dateMonth, int dateDay, int dateYear)
+    : month {dateMonth}, day{dateDay}, year{dateYear}{
+        if ((month<1)||(month>12)){
+        month=1;
+    }
+    }
+    void setMonth(int m){
+    month=m;
+    if ((month<1)||(month>12)){
+        month=1;
+        }
+    }
+
+    int getMonth(){
+    return month;
+    }
+
+    void setDay(int d){
+    day=d;
+    }
+
+    int getDay(){
+    return day;
+    }
+
+    void setYear(int y){
+    year=y;
+    }
+
+    int getYear(){
+    return year;
+    }
+    //void displayDate(){
+    //std::cout << month<<"/"<<day<<"/"<<year;
+    //}
+    void displayDate(){
+    std::cout<<month<<"/"<<day<<"/"<<year;
+    }
+private:
+    int month{0};
+    int day{0};
+    int year{0};
+};
+
+//Problem 3.13 main
+#include <iostream>
+#include "Account.h"
+
+using namespace std;
+
+void displayAccount(Account accountToDisplay){
+cout<<accountToDisplay.getName()<<" balance is $"<<accountToDisplay.getBalance()<<endl;
+}
+int main()
+{
+   Account account1{"Jane Green", 50};
+   Account account2{"John Blue", -7};
+
+   // display initial balance of each object
+   cout<<"account1: ";
+   displayAccount(account1);
+   cout<<"account2: ";
+   displayAccount(account2);
+
+   cout << "\n\nEnter deposit amount for account1: "; // prompt
+   int depositAmount;
+   cin >> depositAmount; // obtain user input
+   cout << "adding " << depositAmount << " to account1 balance";
+   account1.deposit(depositAmount); // add to account1's balance
+
+   cout<<"\n\naccount1: ";
+   displayAccount(account1);
+   cout<<"account2: ";
+   displayAccount(account2);
+
+   cout << "\n\nEnter deposit amount for account2: "; // prompt
+   cin >> depositAmount; // obtain user input
+   cout << "adding " << depositAmount << " to account2 balance";
+   account2.deposit(depositAmount); // add to account2 balance
+
+   cout<<"\n\naccount1: ";
+   displayAccount(account1);
+   cout<<"account2: ";
+   displayAccount(account2);
+}
+
+
+// Problem 3.13 class
+#include <string>
+
+class Account {
+public:
+   // Account constructor with two parameters
+   Account(std::string accountName, int initialBalance)
+      : name{accountName} { // assign accountName to data member name
+      if (initialBalance > 0) { // if the initialBalance is valid
+         balance = initialBalance; // assign it to data member balance
+      }
+   }
+
+   // function that deposits (adds) only a valid amount to the balance
+   void deposit(int depositAmount) {
+      if (depositAmount > 0) { // if the depositAmount is valid
+         balance = balance + depositAmount; // add it to the balance
+      }
+   }
+
+   // function returns the account balance
+   int getBalance() const {
+      return balance;
+   }
+
+   // function that sets the name
+   void setName(std::string accountName) {
+      name = accountName;
+   }
+
+   // function that returns the name
+   std::string getName() const {
+      return name;
+   }
+private:
+   std::string name; // account name data member
+   int balance{0}; // data member with default initial value
+};
