@@ -14,7 +14,14 @@ j) central processing unit
 a)C
 b)C++
 //1.6
-Editing a Program, Preprocessing a C++ Program, Compiling a C++ Program, Linking, Loading, Execution.
-IDE.
+a) Editing a Program, Preprocessing a C++ Program, Compiling a C++ Program, Linking, Loading, Execution.
+b) IDE.
 //1.7
-My watch is an object, that is used by routines I initiate. It contains non-static attributes related to what it displays (time, or time and logo), and how tight the band is, as well as as static attributes related to its size and coloring. My watch has behaviors-- the time it displays as an example. It also contains functions, such as its timer. My watch can inherit qualities from my heart rate monitor. I don’t doubt that there had to be a modeling system to plan out the system requirements for my watch, and how to satisfy them. I send messages to my watch by pressing on the side buttons, these can then send messages to my heart rate monitor, and to the functions contained in the watch, etc. The various attributes and functions in my watch are encapsulated into it, hidden from my view and prevented from interacting via information hiding with other objects I own. There is only limited information hiding in my watch-- I have access to most of its components, though not all, for example I do not see its circuitry or machine code.
+My watch is an object, that is used by routines I initiate. 
+It contains non-static attributes related to what it displays (time, or time and logo), and how tight the band is, as well as static attributes related to its size and coloring. 
+My watch has behaviors-- the time it displays as an example. It also contains functions, such as its timer. 
+My watch can inherit qualities from my heart rate monitor. 
+I don’t doubt that there had to be a modeling system to plan out the system requirements for my watch, and how to satisfy them.
+I send messages to my watch by pressing on the side buttons, these can then send messages to my heart rate monitor, and to the functions contained in the watch, etc. 
+The various attributes and functions in my watch are encapsulated into it, hidden from my view and prevented from interacting via information hiding with other objects I own. 
+There is only limited information hiding in my watch-- I have access to most of its components, though not all, for example I do not see its circuitry or machine code.
