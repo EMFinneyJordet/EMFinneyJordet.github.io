@@ -1,0 +1,385 @@
+//Problem 6.24
+//REALLY shoulda used a switch. Oh well.
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+using namespace std;
+void seperator(short x);
+int main()
+{
+    cout << "Enter number to seperate:";
+    short a;
+    cin >> a;
+seperator(a);
+return 0;
+}
+
+void seperator(short x){
+    short ones = x % 10;
+    short tens;
+    short hundreds;
+    short thousands;
+    short tenthousands;
+    x = x - ones;
+
+    if ( x >= 10 ) {
+        tens = (x % 100) / 10;
+        x= x - tens;
+    }
+    else {
+        cout << ones;
+        exit(0);
+    }
+
+    if( x >= 100){
+        hundreds =( x % 1000 ) / 100;
+        x = x - hundreds;
+    }
+
+    else {
+        cout << tens << "  " << ones;
+        exit(0);
+    }
+
+    if ( x >= 1000){
+        thousands=(x % 10000) / 1000;
+        x = x - thousands;
+    }
+
+    else {
+        cout << hundreds  << "  " << tens << "  " << ones;
+        exit(0);
+    }
+
+    if ( x >= 10000){
+        tenthousands = x / 10000;
+        cout << tenthousands << "  " << thousands << "  " << hundreds  << "  " << tens << "  " << ones;
+
+    }
+
+    else {
+        cout << thousands << "  " << hundreds  << "  " << tens << "  " << ones;
+
+    }
+}
+//Problem 6.25
+//REALLY shoulda used a switch. Oh well.
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+using namespace std;
+void seperator(short x);
+int main()
+{
+    cout << "Enter number to seperate:";
+    short a;
+    cin >> a;
+seperator(a);
+return 0;
+}
+
+void seperator(short x){
+    short ones = x % 10;
+    short tens;
+    short hundreds;
+    short thousands;
+    short tenthousands;
+    x = x - ones;
+
+    if ( x >= 10 ) {
+        tens = (x % 100) / 10;
+        x= x - tens;
+    }
+    else {
+        cout << ones;
+        exit(0);
+    }
+
+    if( x >= 100){
+        hundreds =( x % 1000 ) / 100;
+        x = x - hundreds;
+    }
+
+    else {
+        cout << tens << "  " << ones;
+        exit(0);
+    }
+
+    if ( x >= 1000){
+        thousands=(x % 10000) / 1000;
+        x = x - thousands;
+    }
+
+    else {
+        cout << hundreds  << "  " << tens << "  " << ones;
+        exit(0);
+    }
+
+    if ( x >= 10000){
+        tenthousands = x / 10000;
+        cout << tenthousands << "  " << thousands << "  " << hundreds  << "  " << tens << "  " << ones;
+
+    }
+
+    else {
+        cout << thousands << "  " << hundreds  << "  " << tens << "  " << ones;
+
+    }
+}
+
+//Problem 6.26
+#include <iostream>
+
+using namespace std;
+int celsiusTemp (int ftemp);
+int fahrenheitTemp (int ctemp);
+int main()
+{
+    for (int i=0; i<=100; i++){
+        cout<<"Celsius temperature:  "<< i << "  Fahrenheit temperature:  " << fahrenheitTemp(i) << "\n";
+    }
+    cout << "\n\n";
+    for (int j=32; j<=212; j++) {
+        cout<<"Fahrenheit temperature:  "<< j << "  Celsius temperature:  " << celsiusTemp(j) << "\n";
+    }
+}
+
+int celsiusTemp (int ftemp){
+    int celsius = ((ftemp-32)*5)/9;
+    return celsius;
+}
+
+int fahrenheitTemp (int ctemp){
+    int farenheit = ((ctemp*9)/5)+32;
+    return farenheit;
+}
+//Problem 6.28
+#include <iostream>
+using namespace std;
+
+bool isPerfect(int number);
+int main()
+{
+    for (int j=1; j<=1000; j++){
+        if(isPerfect(j)==true){
+                cout << j << " is perfect \n";
+    }
+        if(isPerfect(j)==false){
+            cout << j << " is not perfect \n";
+        }
+}
+}
+bool isPerfect (int number) {
+    int sum{0};
+    for (int i=1; i<=(number/2)+1; i++){
+        if (number%i==0){
+            sum+=i;
+        }
+    }
+    if (sum==number){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+//Problem 6.30
+#include <iostream>
+#include <cmath>
+using namespace std;
+double switcharoo(double n);
+int main()
+{
+    cout << "enter number to have its digits switched\n";
+    double k;
+    cin >> k;
+    cout << "switched: " << switcharoo(k);
+}
+double switcharoo(double n){
+    double switched{0};
+    double i{1};
+    while(pow(10,i)<(n*10)){
+        switched=switched*10+ (fmod( n , (pow(10,i)) )/pow(10,i-1));
+        //cout << fmod( n , (pow(10,i)) ) << "c" ;
+        //cout << switched << "d";
+        n = n- fmod( n, (pow(10,i)) );
+        //cout << n << "b";
+        i++;
+        //cout<< pow(10,i) << "a" ;
+    }
+    return switched;
+}
+
+//Problem 6.36
+#include <iostream>
+
+using namespace std;
+int power(int base, int exponent);
+int main()
+{
+    cout << power(2,4);
+}
+int power(int base, int exponent){
+    if(exponent == 1){
+        return base;
+    }
+    return power(base, exponent-1)*base;
+}
+
+//Problem 6.40
+#include <iostream>
+
+using namespace std;
+int power(int base, int exponent);
+int main()
+{
+    cout << power(2,4);
+}
+int power(int base, int exponent){
+    if(exponent == 1){
+        return base;
+    }
+    return power(base, exponent-1)*base;
+}
+
+//Problem 6.42
+#include <iostream>
+#include <cmath>
+using namespace std;
+double distance(double x1, double y1, double x2, double y2);
+int main()
+{
+    cout << distance(10,3,14,6);
+}
+
+double distance(double x1, double y1, double x2, double y2){
+    return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+}
+
+
+//Problem 6.47
+// Fig. 6.9: fig06_09.cpp
+// Craps simulation.
+#include <iostream>
+#include <cstdlib> // contains prototypes for functions srand and rand
+#include <ctime> // contains prototype for function time
+using namespace std;
+
+unsigned int rollDice(); // rolls dice, calculates and displays sum
+bool winCraps();
+int main() {
+double bankBalance = 1000;
+cout << "Enter your wager to begin: ";
+double wager;
+cin>>wager;
+while (bankBalance>0){
+    if(wager>bankBalance){
+        cout << "Wager must be below current bank balance\n";
+    }
+
+    else{
+        if(wager<bankBalance*.1){
+            cout << "Aw cmon, take a chance!\n";
+        }
+        if(wager>bankBalance*.9){
+            cout << "Oh, you're going for broke, huh?\n";
+        }
+        if (winCraps() == false){
+            bankBalance-=wager;
+        }
+
+        else{
+            bankBalance+=wager;
+            cout << "You're up big. Now's the time to cash in your chips!\n";
+        }
+    }
+    cout << "Enter a new wager. Enter -1 to exit: ";
+    cin>>wager;
+    if (wager == -1){
+        cout << "Your final balance was $" << bankBalance;
+        return 0;
+    }
+}
+cout << "Sorry you're busted!";
+}
+bool winCraps(){
+   enum class Status {CONTINUE, WON, LOST}; // all caps in constants
+
+   // randomize random number generator using current time
+   srand(static_cast<unsigned int>(time(0)));
+
+   unsigned int myPoint{0}; // point if no win or loss on first roll
+   Status gameStatus; // can be CONTINUE, WON or LOST
+   unsigned int sumOfDice{rollDice()}; // first roll of the dice
+
+   // determine game status and point (if needed) based on first roll
+   switch (sumOfDice) {
+      case 7: // win with 7 on first roll
+      case 11: // win with 11 on first roll
+         gameStatus = Status::WON;
+         break;
+      case 2: // lose with 2 on first roll
+      case 3: // lose with 3 on first roll
+      case 12: // lose with 12 on first roll
+         gameStatus = Status::LOST;
+         break;
+      default: // did not win or lose, so remember point
+         gameStatus = Status::CONTINUE; // game is not over
+         myPoint = sumOfDice; // remember the point
+         cout << "Point is " << myPoint << endl;
+         break; // optional at end of switch
+   }
+
+   // while game is not complete
+   while (Status::CONTINUE == gameStatus) { // not WON or LOST
+      sumOfDice = rollDice(); // roll dice again
+
+      // determine game status
+      if (sumOfDice == myPoint) { // win by making point
+         gameStatus = Status::WON;
+      }
+      else {
+         if (sumOfDice == 7) { // lose by rolling 7 before point
+            gameStatus = Status::LOST;
+         }
+      }
+   }
+
+   // display won or lost message
+   if (Status::WON == gameStatus) {
+      cout << "Player wins" << endl;
+      return true;
+   }
+   else {
+      cout << "Player loses" << endl;
+      return false;
+   }
+}
+
+// roll dice, calculate sum and display results
+unsigned int rollDice() {
+   int die1{1 + rand() % 6}; // first die roll
+   int die2{1 + rand() % 6}; // second die roll
+   int sum{die1 + die2}; // compute sum of die values
+
+   // display results of this roll
+   cout << "Player rolled " << die1 << " + " << die2
+      << " = " << sum << endl;
+   return sum;
+}
+
+/**************************************************************************
+ * (C) Copyright 1992-2017 by Deitel & Associates, Inc. and               *
+ * Pearson Education, Inc. All Rights Reserved.                           *
+ *                                                                        *
+ * DISCLAIMER: The authors and publisher of this book have used their     *
+ * best efforts in preparing the book. These efforts include the          *
+ * development, research, and testing of the theories and programs        *
+ * to determine their effectiveness. The authors and publisher make       *
+ * no warranty of any kind, expressed or implied, with regard to these    *
+ * programs or to the documentation contained in these books. The authors *
+ * and publisher shall not be liable in any event for incidental or       *
+ * consequential damages in connection with, or arising out of, the       *
+ * furnishing, performance, or use of these programs.                     *
+ **************************************************************************/
