@@ -1,0 +1,192 @@
+//Problem 7.13
+#include <iostream>
+#include <iomanip>
+#include <array>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    int counter = 1;
+    int place = 0;
+    int number;
+    array<int,20> arrayOne{};
+    while (counter < 20) {
+        cout << "Enter next number: \n";
+        cin >> number;
+        if (number < 10 || number > 100 ) {
+            cout << "\nNumber must be between 10 and 100, inclusive.\n";
+        }
+        else {
+            bool found = false;
+            for (int i=0; i<place; i++){
+                if (arrayOne[i] == number) {
+                    found = true;
+                }
+            }
+           // cout << found << "a";
+            if ( found == false ){
+                arrayOne[place] = number;
+                place++;
+            }
+            //cout << place << "b";
+            for (int i=0; i<=place; i++){
+        //cout << arrayOne[i] << "c";
+    }
+            }
+    counter++;
+    }
+    for (int i=0; i<=place-1; i++){
+        cout << arrayOne[i];
+    }
+
+   // for (int i; i <= place ; i++){
+      //  cout << vectorOne[i];
+    }
+
+//7.18
+//Lengthening the game doesn't appear to increase win chances
+// Fig. 6.9: fig06_09.cpp
+// Craps simulation.
+#include <iostream>
+#include <cstdlib> // contains prototypes for functions srand and rand
+#include <ctime> // contains prototype for function time
+#include <vector>;
+using namespace std;
+
+unsigned int rollDice(); // rolls dice, calculates and displays sum
+int playCraps();
+int main() {
+vector <int> wins(20);
+vector <int> losses(20);
+int placeholder;
+int a{0};
+int totalWins{0};
+int totalLosses{0};
+int totalLength{0};
+while (a < 1000) {
+    a++;
+placeholder=playCraps();
+if ((placeholder > 0)&&placeholder<20){
+    wins[placeholder-1]++;
+}
+else if (placeholder>19){
+    wins[20]++;
+}
+else if (placeholder<0&&placeholder>-20){
+    losses[-1*(placeholder)-1]++;
+}
+else if (placeholder<-20){
+    losses[-20]++;
+}
+}
+for (int i{0}; i<20; i++){
+    cout << "Wins on " << i+1 << " rolls: " << wins[i] << "\n";
+    totalWins=totalWins+wins[i];
+    totalLength+=i*wins[i];
+}
+cout << "Wins with >20 rolls: " << wins[20];
+totalWins=totalWins+wins[20];
+cout << "\n";
+for (int j{0}; j<20; j++){
+    cout << "Losses on " << j+1 << " rolls: " << losses[j] << "\n";
+    totalLosses=totalLosses+losses[j];
+    totalLength+=j*losses[j];
+}
+cout << "Losses with >20 rolls: " << losses[20] << "\n";
+totalLosses=totalLosses+losses[20];
+int winChance = abs(totalWins/(totalWins+totalLosses));
+if (winChance>1){
+    winChance=1;
+}
+cout << "Chance of winning = " << abs(totalWins/(totalWins+totalLosses)) << "\n";
+
+cout << "Average length of game: " << (totalLength/1000)+1;
+}
+
+int playCraps(){
+    int result{1};
+   // scoped enumeration with constants that represent the game status
+   enum class Status {CONTINUE, WON, LOST}; // all caps in constants
+
+   // randomize random number generator using current time
+   srand(static_cast<unsigned int>(time(0)));
+
+   unsigned int myPoint{0}; // point if no win or loss on first roll
+   Status gameStatus; // can be CONTINUE, WON or LOST
+   unsigned int sumOfDice{rollDice()}; // first roll of the dice
+
+   // determine game status and point (if needed) based on first roll
+   switch (sumOfDice) {
+      case 7: // win with 7 on first roll
+      case 11: // win with 11 on first roll
+         gameStatus = Status::WON;
+         break;
+      case 2: // lose with 2 on first roll
+      case 3: // lose with 3 on first roll
+      case 12: // lose with 12 on first roll
+         gameStatus = Status::LOST;
+         break;
+      default: // did not win or lose, so remember point
+         gameStatus = Status::CONTINUE; // game is not over
+         myPoint = sumOfDice; // remember the point
+         //cout << "Point is " << myPoint << endl;
+         break; // optional at end of switch
+   }
+
+   // while game is not complete
+   while (Status::CONTINUE == gameStatus) { // not WON or LOST
+      sumOfDice = rollDice(); // roll dice again
+        result++;
+      // determine game status
+      if (sumOfDice == myPoint) { // win by making point
+         gameStatus = Status::WON;
+      }
+      else {
+         if (sumOfDice == 7) { // lose by rolling 7 before point
+            gameStatus = Status::LOST;
+         }
+      }
+   }
+
+   // display won or lost message
+   if (Status::WON == gameStatus) {
+      //cout << "Player wins" << endl;
+      return result;
+   }
+   else {
+      //cout << "Player loses" << endl;
+      return (result*-1);
+   }
+}
+
+// roll dice, calculate sum and display results
+unsigned int rollDice() {
+   int die1{1 + rand() % 6}; // first die roll
+   int die2{1 + rand() % 6}; // second die roll
+   int sum{die1 + die2}; // compute sum of die values
+
+   // display results of this roll
+   //cout << "Player rolled " << die1 << " + " << die2 << " = " << sum << endl;
+   return sum;
+}
+
+//7.32
+#include <iostream>
+#include <vector>
+using namespace std;
+int recursiveMinimum (vector<int> numbers, int ssub, int esub){
+if (esub==ssub){
+    return numbers[esub];
+}
+if (min(numbers[ssub],numbers[esub])==numbers[esub]){
+    return recursiveMinimum(numbers, ssub+1, esub);
+}
+if (min(numbers[ssub],numbers[esub])==numbers[ssub]){
+    return recursiveMinimum(numbers,ssub,esub-1);
+}
+}
+int main()
+{
+    cout << recursiveMinimum({1,2,-8,4},0,4);
+}
+
